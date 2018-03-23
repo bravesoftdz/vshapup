@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VShapeUp" Class="VShapeUpDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQL2008R2;Initial Catalog=VShapeUp;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="VShapeUpConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Challenger" Member="Challengers">
+    <Type Name="Challenger">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Invitor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LineID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsChanllenge" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OOP" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="Challenger_BodyComposition" Member="BodyCompositions" ThisKey="UserNo" OtherKey="UserNo" Type="BodyComposition" />
+      <Association Name="Challenger_Page" Member="Pages" ThisKey="UserNo" OtherKey="UserNo" Type="Page" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BodyComposition" Member="BodyCompositions">
+    <Type Name="BodyComposition">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MeasureDate" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Challenger_BodyComposition" Member="Challenger" ThisKey="UserNo" OtherKey="UserNo" Type="Challenger" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IndexMaster" Member="IndexMasters">
+    <Type Name="IndexMaster">
+      <Column Name="DocSeries" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Docyear" Type="System.String" DbType="VarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Docmonth" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocLen" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OPPData" Member="OPPDatas">
+    <Type Name="OPPData">
+      <Column Name="ID" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OPPNo" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="OPPDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RegisterPrefix" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ChallengeResult" Member="V_ChallengeResults">
+    <Type Name="V_ChallengeResult">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Invitor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MeasureDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LineID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OOP" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_RegisterChallengeResult_Report" Member="V_RegisterChallengeResult_Reports">
+    <Type Name="V_RegisterChallengeResult_Report">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Invitor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LineID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Page" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Number1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate4" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate5" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ChallengeResult_Report" Member="V_ChallengeResult_Reports">
+    <Type Name="V_ChallengeResult_Report">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Invitor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LineID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Page" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Number1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate4" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Number5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeasureDate5" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Weight5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VisFat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Muscle" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BodyAge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BMR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_ChallengeResult_PageNo" Member="Pages">
+    <Type Name="Page">
+      <Column Name="RecNo" Type="System.Int64" DbType="BigInt" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PageNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Challenger_Page" Member="Challenger" ThisKey="UserNo" OtherKey="UserNo" Type="Challenger" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserNo" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="UserType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
